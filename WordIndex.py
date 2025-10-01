@@ -1,20 +1,33 @@
 #WordIndex.py
-#Name:
-#Date:
-#Assignment:
+#Name: Adam McLaughlin
+#Date: Fall25
+#Assignment: Lab06
 
 def main():
-  textFile = open("fish.txt", 'r')
-  
-  words = {} #create an empty dictionary
-  
-  
-  print ("fish" in words) #is a word already in the dictionary?
-  words["fish"] = [2]     #add a list to the dictionary
-  print ("fish" in words) #is the word there now?
-  words["fish"].append(5) #add to an existing list
-  print(words)
+    filename = "fish.txt"  
+    file = open(filename, "r")
 
+    word_index = {}  
+    line_number = 1  
+    for line in file:
+        line = line.lower().strip()  
+        words = line.split()  
 
-if __name__ == '__main__':
-  main()
+        for word in words:
+            word = word.strip(",.!?;:")
+
+            if word in word_index:
+                if line_number not in word_index[word]:
+                    word_index[word].append(line_number)  
+            else:
+                word_index[word] = [line_number]  
+
+        line_number += 1 
+
+    file.close()  
+
+    for word in sorted(word_index.keys()):
+        print(word, ":", word_index[word])
+
+if __name__ == "__main__":
+    main()

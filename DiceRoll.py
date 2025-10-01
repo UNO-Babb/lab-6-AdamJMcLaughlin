@@ -1,18 +1,32 @@
 #DiceRoll.py
-#Name:
-#Date:
-#Assignment:
-import random
+#Name: Adam McLaughlin
+#Date: Fall25
+#Assignment: Lab06
 
-def main():
-  #Create an empty list with possible roll values
-  rolls = [0,0,0,0,0,0,0,0,0,0,0,0]
-  #Create two dice values ranging from 1 - 6 each
-  
-  #find the sum total of the two dice
-  
-  #print statictics for dice rolls
+import random  
 
+def roll_dice_simulation():
+    
+    totals = [0] * 13  
 
-if __name__ == '__main__':
-  main()
+    num_rolls = 10000
+
+    
+    for _ in range(num_rolls):
+        
+        die1 = random.randint(1, 6)
+        die2 = random.randint(1, 6)
+        total = die1 + die2  
+        totals[total] += 1  
+
+    # results
+    print("Results of rolling two dice 10,000 times:")
+    print("Total   Count   Percentage")
+    print("**************************")
+    for total in range(2, 13):  
+        count = totals[total]
+        percentage = (count / num_rolls) * 100  
+        print(f"{total:<7}{count:<8}{percentage:.2f}%")  
+
+roll_dice_simulation()
+
