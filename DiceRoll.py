@@ -19,7 +19,6 @@ def roll_dice_simulation():
         total = die1 + die2  
         totals[total] += 1  
 
-    # results
     print("Results of rolling two dice 10,000 times:")
     print("Total   Count   Percentage")
     print("**************************")
